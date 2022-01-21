@@ -1,7 +1,7 @@
 
 document.addEventListener("submit", (event)=>{
     console.log("Validating")
-    let user = document.getElementById("username").value;
+    let username = document.getElementById("username").value;
     let password = document.getElementById("password").value;
 
     let request = new XMLHttpRequest();
@@ -15,9 +15,6 @@ event.preventDefault()
 })
 
 
-// 
-// 
-// 
 // re-CAPTCHA submitbutton/muspekare.
 function recaptcha_callback(){
     var submitBtn = document.querySelector('#submtbtn');
