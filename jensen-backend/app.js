@@ -26,7 +26,7 @@ app.get("/", (req ,res)=>{
 
 app.get("/health", (req ,res)=>{
    headers={"http_status":200, "cache-control":  "no-cache"}
-   body={"status": "available"}
+   body={"status": "framgång"}
    res.status(200).send(body)
 })
 
