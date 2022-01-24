@@ -53,5 +53,5 @@ app.post('/authorize', (req, res) => {
 });
 
 app.listen(PORT , ()=>{
-     console.log(`STARTED LISTENING ON PORT ${PORT}`)
+     console.log(`Lyssnar på port ${PORT}`)
 });
