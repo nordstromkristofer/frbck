@@ -24,10 +24,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 
-// SSL
-app.use('/', (req,res,next)=>{
-   res.send('Tjena från SSL')
-})
+
 
 const sslServer = https.createServer({
    key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
@@ -36,7 +33,13 @@ const sslServer = https.createServer({
    app
 )
 
-sslServer.listen(3000,()=> console.log('Säker server på 5500'))
+sslServer.listen(5500,()=> console.log('Säker server på 5500'))
+// SSL
+
+
+app.use('/', (req,res,next)=>{
+   res.send('Tjena från SSL')
+})
 
 
 app.get("/", (req ,res)=>{
