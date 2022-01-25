@@ -3,10 +3,15 @@ const credentials = {secretUser:"user" , secretPassword:"password"}
 const cors = require("cors")
 const express = require("express")
 const bodyParser = require('body-parser')
-const jwt = require('jsonwebtoken');
+const jwt = require('jsonwebtoken')
+const https = require ('https')
+const path = require('path')
+const fs = require('fs')
+
+
 
 const app = express()
-const PORT = process.env.PORT || 5500
+// const PORT = process.env.PORT || 5500
 
 app.use(function (req, res, next) {
    res.setHeader('Content-Security-Policy', "default-src 'self'; font-src 'self'; img-src 'self'; script-src 'self'; style-src 'self'; frame-src 'self'");
@@ -17,6 +22,22 @@ app.use('/healthcheck', require('./routes/healthcheck.routes'));
 
 app.use(express.urlencoded({ extended: true }));
 app.use(cors())
+
+
+// SSL
+app.use('/', (req,res,next)=>{
+   res.send('Tjena från SSL')
+})
+
+const sslServer = https.createServer({
+   key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
+   cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
+   },
+   app
+)
+
+sslServer.listen(3000,()=> console.log('Säker server på 5500'))
+
 
 app.get("/", (req ,res)=>{
    headers={"http_status":200, "cache-control":  "no-cache"}
@@ -52,6 +73,6 @@ app.post('/authorize', (req, res) => {
    }
 });
 
-app.listen(PORT , ()=>{
-     console.log(`Lyssnar på port ${PORT}`)
-});
+// app.listen(PORT , ()=>{
+//      console.log(`Lyssnar på port ${PORT}`)
+// });
