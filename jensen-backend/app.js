@@ -24,8 +24,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cors())
 
 
-
-
 const sslServer = https.createServer({
    key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
    cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
