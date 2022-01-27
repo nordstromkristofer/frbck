@@ -9,7 +9,6 @@ const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
 const dotenv = require ('dotenv');
-
 const app = express()
 const PORT = process.env.PORT || 5500
 app.listen(PORT , ()=>{
@@ -27,13 +26,15 @@ mongoose.connect(
  //import routes
 const authRoute = require ('./routes/auth');
 
+ //middleware
+
+ app.use(express.json());
+
 //route middlewares
  app.use('/api/user', authRoute);
 
 
- //middleware
 
-app.use(express.json());
 
 
 //audit
