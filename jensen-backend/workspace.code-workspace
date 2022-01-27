@@ -1,10 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "."
+			"path": ".."
 		},
 		{
 			"path": "../../../../Users/kristofernordstrom/Documents/Säker kommunikation VT 2022/Nodejs-User-Authentication-master"
+		},
+		{
+			"path": "../../../../Users/kristofernordstrom/Documents/Säker kommunikation VT 2022/JWT-Authentication-master"
 		}
 	],
 	"settings": {}
