@@ -1,5 +1,22 @@
 const mongoose = require('mongoose');
 
+//validering
+
+const Joi = require('@hapi/Joi');
+
+const Schema = {
+    name: Joi.string()
+    .min(6)
+    .required(),
+    email: Joi.string()
+    .min(6)
+    .required()
+    .email(),
+    password: Joi.string()
+    .min(6)
+    .required()
+};
+
 const userSchema = new mongoose.Schema({
     name: {  
         type: String,
