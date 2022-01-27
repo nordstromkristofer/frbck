@@ -10,6 +10,12 @@ const fs = require('fs')
 const mongoose = require ('mongoose')
 const dotenv = require ('dotenv');
 
+const app = express()
+const PORT = process.env.PORT || 5500
+app.listen(PORT , ()=>{
+     console.log(`Lyssnar på port ${PORT}`)
+});
+
 dotenv.config();
 
 //db connect
@@ -17,6 +23,18 @@ mongoose.connect(
    process.env.DB_CONNECT,
    () => console.log('DB connectad iaf!')
 );
+
+ //import routes
+const authRoute = require ('./routes/auth');
+
+//route middlewares
+ app.use('/api/user', authRoute);
+
+
+ //middleware
+
+app.use(express.json());
+
 
 //audit
 // var mongoose = require('mongoose');
@@ -32,21 +50,6 @@ mongoose.connect(
 
 
 
- const app = express()
- const PORT = process.env.PORT || 5500
- app.listen(PORT , ()=>{
-      console.log(`Lyssnar på port ${PORT}`)
- });
-
-
-
- //import routes
-const authRoute = require ('./routes/auth');
-
-
-//route middlewares
-app.use('/api/user', authRoute);
-
 
 
 
@@ -60,8 +63,6 @@ app.use('/api/user', authRoute);
 
  app.use(express.urlencoded({ extended: true }));
  app.use(cors())
-
-
 
 // SSL
  const sslServer = https.createServer({
