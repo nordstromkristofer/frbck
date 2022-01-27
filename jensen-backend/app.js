@@ -8,14 +8,14 @@ const https = require ('https')
 const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
-const dotenv = require ('dotenv');
+require("dotenv").config();
 const app = express()
 const PORT = process.env.PORT || 5500
 app.listen(PORT , ()=>{
      console.log(`Lyssnar på port ${PORT}`)
 });
 
-dotenv.config();
+
 
 //db connect
 mongoose.connect(
@@ -25,6 +25,7 @@ mongoose.connect(
 
  //import routes
 const authRoute = require ('./routes/auth');
+const postRoute = require ('./routes/posts');
 
  //middleware
 
@@ -32,6 +33,7 @@ const authRoute = require ('./routes/auth');
 
 //route middlewares
  app.use('/api/user', authRoute);
+ app.use('/api/posts', postRoute);
 
 
 
@@ -65,14 +67,14 @@ const authRoute = require ('./routes/auth');
  app.use(express.urlencoded({ extended: true }));
  app.use(cors())
 
-// SSL
- const sslServer = https.createServer({
-    key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
-    cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
-    },
-    app
- )
- sslServer.listen(5000,()=> console.log('Säker server på 5000'))
- app.use('/', (req,res,next)=>{
-    res.send('Tjena från SSL')
- });
+// // SSL
+  const sslServer = https.createServer({
+     key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
+     cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
+     },
+     app
+  )
+  sslServer.listen(5000,()=> console.log('Säker server på 5000'))
+  app.use('/', (req,res,next)=>{
+     res.send('Tjena från SSL')
+  });
