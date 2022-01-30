@@ -1,3 +1,8 @@
+const express = require('express');
+
+const app = express();
+
+
 
 document.addEventListener("submit", (event)=>{
     console.log("Validating")

@@ -8,6 +8,7 @@ const https = require ('https')
 const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
+const expressLayouts = require('express-ejs-layouts');
 require("dotenv").config();
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -15,6 +16,13 @@ app.listen(PORT , ()=>{
      console.log(`Lyssnar på port ${PORT}`)
 });
 
+//EJS
+app.use(expressLayouts);
+app.set('view engine', 'ejs');
+
+//routes
+app.use('/', require('../jensen-frontend/routes/index'));
+app.use('/users', require('../jensen-frontend/routes/users'));
 
 
 //db connect
