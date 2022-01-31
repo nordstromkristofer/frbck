@@ -8,7 +8,8 @@ const https = require ('https')
 const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
-const expressLayouts = require('express-ejs-layouts');
+const expressLayouts = require('express-ejs-layouts')
+const ejs = require('ejs');
 require("dotenv").config();
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -16,13 +17,23 @@ app.listen(PORT , ()=>{
      console.log(`Lyssnar på port ${PORT}`)
 });
 
+
+
+
 //EJS
-app.use(expressLayouts);
+// app.use(expressLayouts);
 app.set('view engine', 'ejs');
+
+
+//Bodyparser
+app.use(express.urlencoded({ extended: false }));
 
 //routes
 app.use('/', require('../jensen-frontend/routes/index'));
 app.use('/users', require('../jensen-frontend/routes/users'));
+app.set('views', path.join('../jensen-frontend/views'));
+
+
 
 
 //db connect
@@ -76,13 +87,13 @@ const postRoute = require ('./routes/posts');
  app.use(cors())
 
 // // SSL
-  const sslServer = https.createServer({
-     key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
-     cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
-     },
-     app
-  )
-  sslServer.listen(5000,()=> console.log('Säker server på 5000'))
-  app.use('/', (req,res,next)=>{
-     res.send('Tjena från SSL')
-  });
+//   const sslServer = https.createServer({
+//      key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
+//      cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
+//      },
+//      app
+//   )
+//   sslServer.listen(5000,()=> console.log('Säker server på 5000'))
+//   app.use('/', (req,res,next)=>{
+//      res.send('Tjena från SSL')
+//   });

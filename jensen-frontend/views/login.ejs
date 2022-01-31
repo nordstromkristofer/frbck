@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>node js passport app</title>
+
+</head>
+<body>
+    <body>
+        <div>
+        <h1>Login</h1>
+        <form action="/users/login" method="POST"></form>
+        <div class=form-group>
+            <label for="email">Email</label>
+            <input 
+            type="email"
+            id="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            value="<%= typeof name != 'undefined' ? email : '' %>"
+            />
+        </div>
+    </div>
+    <div class=form-group>
+        <label for="password">Password</label>
+        <input 
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="Password"
+        value="<%= typeof name != 'undefined' ? password : '' %>"
+        />
+    </div>
+    </body>
+</body>
+</html>
