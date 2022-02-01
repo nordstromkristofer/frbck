@@ -13,13 +13,15 @@ const flash = require('connect-flash');
 const session = require('express-session');
 require("dotenv").config();
 const app = express()
+const passport = require('passport')
 const PORT = process.env.PORT || 5500
 app.listen(PORT , ()=>{
      console.log(`Lyssnar på port ${PORT}`)
 });
 
 
-
+//Passport
+require('./passport')(passport);
 
 
 
@@ -34,6 +36,10 @@ app.use(session({
    resave: false,
    saveUninitialized: true
 }))
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
 
 //connect flash
 app.use(flash());
