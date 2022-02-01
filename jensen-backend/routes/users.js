@@ -3,6 +3,7 @@ const app = express();
 const bp = require('body-parser')
 const router = express.Router();
 const bcrypt = require('bcryptjs');
+const passport = require('passport');
 router.use(express.json());
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }))
@@ -78,7 +79,7 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    failureRedirect: '/users/login', // routa tbx
     failureFlash: true
   })(req, res, next);
 });
