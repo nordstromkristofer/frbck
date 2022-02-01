@@ -9,6 +9,8 @@ const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
 const expressLayouts = require('express-ejs-layouts');
+const flash = require('connect-flash');
+const session = require('express-session');
 require("dotenv").config();
 const app = express()
 const PORT = process.env.PORT || 5500
@@ -19,10 +21,30 @@ app.listen(PORT , ()=>{
 
 
 
+
+
 //EJS
 // app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
+
+//express session
+app.use(session({
+   secret: 'hemlis',
+   resave: false,
+   saveUninitialized: true
+}))
+
+//connect flash
+app.use(flash());
+
+//global vars
+
+app.use((req,res,next) => {
+   res.locals.success_msg = req.flash('lycka msg');
+   res.locals.error_msg= req.flash('error msg');
+   next();
+})
 
 
 //routes
