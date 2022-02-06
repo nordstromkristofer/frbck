@@ -7,8 +7,11 @@ const passport = require('passport');
 router.use(express.json());
 router.use(bp.json());
 router.use(bp.urlencoded({ extended: true }))
+const jwt = require ('jsonwebtoken');
 
 const User = require('../model/User');
+const logger = require('../config/logger');
+const { forwardAuthenticated } = require('../config/auth');
 
 
 // Login Page
@@ -58,6 +61,8 @@ router.post('/register', (req, res) => {
           bcrypt.hash(newUser.password, salt, (err, hash) => {
             if (err) throw err;
             newUser.password = hash;
+            const token = jwt.sign({_id: newUser._id}, process.env.JWT_KEY);
+            newUser.token = token;
             newUser
               .save()
               .then(user => {
@@ -68,13 +73,13 @@ router.post('/register', (req, res) => {
                 res.redirect('/users/login');
               })
               .catch(err => console.log(err));
+      
           });
         });
       }
     });
   }
 });
-
 // Login
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
@@ -82,6 +87,12 @@ router.post('/login', (req, res, next) => {
     failureRedirect: '/users/login', // routa tbx
     failureFlash: true
   })(req, res, next);
+  logger.log({
+    level: 'info',
+    message:''
+  });
+
+
 });
 
 // Logout
@@ -92,3 +103,4 @@ router.get('/logout', (req, res) => {
 });
 
 module.exports = router;
+

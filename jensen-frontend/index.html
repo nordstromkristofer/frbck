@@ -8,14 +8,15 @@
     <link rel="stylesheet" href="main.css">
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
+        <h1>Login-app</h1>
 <body>
     <form>
         <label>Username</label>
         <input id="username" name="username" type="text"/><br>
         <br><label>Password: </label>
         <input id="password" type="password" name="password" required/><br>
-        <br><input id="submtbtn" type="submit" value="login" disabled />
-        <script src="app.js"></script>
+        <br><input id="submtbtn" type="submit" value="login" disabled/>
+    
     </form>
     <br>
     <form action="?" method="POST" class="recaptcha">
@@ -26,33 +27,18 @@
         <!-- <input type="submit" value="Submit"> -->
       </form>
 <!-- AAA -->
-    <div class="wrapper">
-                <img src="kex.png" width="120" height="120" alt="cookie">
-        <div class="content">
-                  <header>Cookie consent</header>
-            <p>Den här sidan använder cookies, vänligen acceptera.</p>
-            <div class="buttons"><br>
-                <button class="item">Ok, det går jag med på.</button>
-                <br><br><a href="#" class="item">Vad menas?</a>
-            </div>
-        </div>
+<div class="wrapper">
+    <img src="#" alt="">
+    <div class="content">
+      <header>Cookies Consent</header>
+      <p>This website use cookies to ensure you get the best experience on our website.</p>
+      <div class="buttons">
+        <button class="item">I understand</button>
+      </div>
     </div>
-
-
-        <script>
-        const cookieBox = document.querySelector(".wrapper"),
-        acceptBtn = cookieBox.querySelector(".buttons button");
-
-        acceptBtn.onclick = ()=>{
-        document.cookie = "Cookie=Ballerina; max-age=60*60*24*30"
-        if(document.cookie){
-            cookieBox.classList.add("hide");
-        }else{
-            alert("cookie kan inte sparas!");
-         }
-        }
-        let checkCookie = document.cookie.indexOf("Cookie=Ballerina");
-        checkCookie != -1 ? cookieBox.classList.add("hide"): cookieBox.classList.remove("hide");
-    </script>
+  </div>
 </body>
+
+<script src="app.js">
+</script>
 </html> 

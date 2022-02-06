@@ -41,6 +41,8 @@
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
-    "routes": "^2.1.0"
+    "routes": "^2.1.0",
+    "winston": "^3.5.1",
+    "winston-mongodb": "^5.0.7"
   }
 }
