@@ -14,34 +14,16 @@ const passport = require('passport')
 const flash = require('connect-flash');
 
 
-// const PORT = process.env.PORT || 5500
-// app.listen(PORT , ()=>{
-//       console.log(`Lyssnar på port ${PORT}`)
-//       logger.error('info')
-// });
 
  // SSL
 
- 
-   const sslServer = https.createServer({
+  const sslServer = https.createServer({
       key: fs.readFileSync(path.join(__dirname, 'certificates', 'key.pem')),
       cert: fs.readFileSync(path.join(__dirname, 'certificates', 'cert.pem')),
      },
      app
    )
   sslServer.listen(5500,()=> console.log('SSL på 5500'))
-
-
-
-
-
-//  // re-CAPTCHA submitbutton/muspekare.
-//  function recaptcha_callback(){
-//    var submitBtn = document.querySelector('#submtbtn');
-//    submitBtn.removeAttribute('disabled');
-//    submitBtn.style.cursor = 'pointer';
-// }
-
 
 //Passport
 require('./config/passport')(passport);
