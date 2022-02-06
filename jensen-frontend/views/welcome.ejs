@@ -1,19 +1,134 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <link href= "../main.css" rel="stylesheet" type="text/css" />
+<!-- 
+    <link href= "../main.css" rel="stylesheet" type="text/css" /> -->
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt</title>
     
 </head>
-        <div>
-        <a href="/users/register">Register</a>
-        <br>
-        <a href="users/login">Login</a>
+<form id="reglog" action="/users/login" method="POST">
+    <div class="form-group">
+        <p>Tack, du är förmodligen ingen robot</p>
+      <label for="email"></label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder="Email"
+      />
     </div>
+    <div class="form-group">
+      <label for="password"></label>
+      <input
+        type="password"
+        id="password"
+        name="password"
+        class="form-control"
+        placeholder="Lösenord"
+      />
+    </div>
+    <br>
+    <button type="submit" class="submitlogin">Login</button>
+    <br><br><a class="regtext" href="/users/register" >Registrera</a><br><br>
+  </form>
+
+
+
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <form action="?" method="POST" class="recaptcha">
+        <div class="g-recaptcha" 
+        data-sitekey="6LclWg0eAAAAAI6WIzYcXWpOJ7pXnDYDa3uiqwHN"
+        data-callback="recaptcha_callback"></div>
+        <br/>
+         <!-- <input type="submit" value="Submit"> -->
+      </form>
+
+
+<div class="wrapper">
+    <img src="#" alt="">
+    <div class="content">
+      <header>Cookies Consent</header>
+      <p>This website use cookies to ensure you get the best experience on our website.</p>
+      <div class="buttons">
+        <button class="item">I understand</button>
+      </div>
+    </div>
+  </div>
+
+
+  <style>
+    body{
+    background-color: #a3c0e0;
+    }
+    
+    
+    form{
+        margin-top: 50px;
+        margin-left:  575px;
+    }
+    
+    label{
+        margin-right:20px;
+    }
+    
+    #submtbtn{
+        cursor: not-allowed;
+        margin-left: 120px;
+    }
+    button{
+        margin-left: 70px;
+    }
+   a{
+        margin-left: 60px;
+    }
+    
+    .wrapper, .button{
+        background: #fff;
+        margin-left:500px;
+        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        position:absolute;
+        left:30px;
+        max-width:365px;
+        border-radius:15px;
+        text-align:center;
+        padding: 25px 25px 30px 25px;
+    }
+    
+    .wrapper.hide{
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease ;
+    } 
+    </style> 
+      
+      
+    <script>
+          function recaptcha_callback(){
+            var submitBtn = document.querySelector('#reglog');
+         submitBtn.removeAttribute('hidden');
+}
+
+const cookieBox = document.querySelector(".wrapper"),
+acceptBtn = cookieBox.querySelector("button");
+acceptBtn.onclick = ()=>{
+  //setting cookie for 1 month, after one month it'll be expired automatically
+  document.cookie = "Cookie=Ballerina; max-age="+60*60*24*30;
+  if(document.cookie){ //if cookie is set
+    cookieBox.classList.add("hide"); //hide cookie box
+  }else{ //if cookie not set then alert an error
+    alert("Cookie can't be set! Please unblock this site from the cookie setting of your browser.");
+  }
+}
+let checkCookie = document.cookie.indexOf("Cookie=Ballerina"); //checking our cookie
+//if cookie is set then hide the cookie box else show it
+checkCookie != -1 ? cookieBox.classList.add("hide") : cookieBox.classList.remove("hide");
+      </script>
+
+
 
 </body>
 </html>

@@ -29,7 +29,7 @@ const flash = require('connect-flash');
      },
      app
    )
-  sslServer.listen(5500,()=> console.log('Säker server på 5500'))
+  sslServer.listen(5500,()=> console.log('SSL på 5500'))
 
 
 
