@@ -8,11 +8,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt</title>
 </head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+<br><br><br>
+<form action="?" method="POST" class="recaptcha">
+    <div class="g-recaptcha" 
+    data-sitekey="6LclWg0eAAAAAI6WIzYcXWpOJ7pXnDYDa3uiqwHN"
+    data-callback="recaptcha_callback"></div>
+    <br/>
+     <!-- <input type="submit" value="Submit"> -->
+  </form>
 <form id="reglog" action="/users/login" method="POST" hidden>
     <div class="form-group">
         <br>    
         <br>
-        <p>Tack, du är förmodligen ingen robot</p>
+        <p>Tack, du är förmodligen ingen robot.</p>
       <label for="email"></label>
       <input
         type="email"
@@ -39,14 +48,7 @@
 
 
 
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
-    <form action="?" method="POST" class="recaptcha">
-        <div class="g-recaptcha" 
-        data-sitekey="6LclWg0eAAAAAI6WIzYcXWpOJ7pXnDYDa3uiqwHN"
-        data-callback="recaptcha_callback"></div>
-        <br/>
-         <!-- <input type="submit" value="Submit"> -->
-      </form>
+
       <div class = "wrapper">
     <div class="content">
       <p>.......Cookies. Du hajar.</p>
