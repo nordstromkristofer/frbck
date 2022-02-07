@@ -74,7 +74,7 @@ mongoose.connect(
 );
 
  //import routes
-const authRoute = require ('./routes/auth');
+// const authRoute = require ('./routes/auth');
 const postRoute = require ('./routes/posts');
 const logger = require("./config/logger")
 
@@ -82,12 +82,9 @@ const logger = require("./config/logger")
 
  app.use(express.json());
 
-//route middlewares
- app.use('/api/user', authRoute);
- app.use('/api/posts', postRoute);
-
-
-
+ //route middlewares
+//  app.use('/api/user', authRoute);
+ app.use('login', postRoute);
 
 
 //heroku
