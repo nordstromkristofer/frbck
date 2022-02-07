@@ -7,10 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Projekt</title>
-    
 </head>
-<form id="reglog" action="/users/login" method="POST">
+<form id="reglog" action="/users/login" method="POST" hidden>
     <div class="form-group">
+        <br>    
+        <br>
         <p>Tack, du är förmodligen ingen robot</p>
       <label for="email"></label>
       <input
@@ -32,7 +33,7 @@
       />
     </div>
     <br>
-    <button type="submit" class="submitlogin">Login</button>
+    <button class="submitlogin">Logga in</button>
     <br><br><a class="regtext" href="/users/register" >Registrera</a><br><br>
   </form>
 
@@ -46,15 +47,11 @@
         <br/>
          <!-- <input type="submit" value="Submit"> -->
       </form>
-
-
-<div class="wrapper">
-    <img src="#" alt="">
+      <div class = "wrapper">
     <div class="content">
-      <header>Cookies Consent</header>
-      <p>This website use cookies to ensure you get the best experience on our website.</p>
+      <p>.......Cookies. Du hajar.</p>
       <div class="buttons">
-        <button class="item">I understand</button>
+        <button class="item">Jag hajar</button>
       </div>
     </div>
   </div>
@@ -65,38 +62,10 @@
     background-color: #a3c0e0;
     }
     
-    
-    form{
-        margin-top: 50px;
-        margin-left:  575px;
-    }
-    
-    label{
-        margin-right:20px;
-    }
-    
     #submtbtn{
         cursor: not-allowed;
-        margin-left: 120px;
     }
-    button{
-        margin-left: 70px;
-    }
-   a{
-        margin-left: 60px;
-    }
-    
-    .wrapper, .button{
-        background: #fff;
-        margin-left:500px;
-        font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-        position:absolute;
-        left:30px;
-        max-width:365px;
-        border-radius:15px;
-        text-align:center;
-        padding: 25px 25px 30px 25px;
-    }
+
     
     .wrapper.hide{
         opacity: 0;

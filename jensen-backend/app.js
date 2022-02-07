@@ -8,6 +8,7 @@ const path = require('path')
 const fs = require('fs')
 const mongoose = require ('mongoose')
 const session = require('express-session');
+const expressLayouts = require('express-ejs-layouts');
 require("dotenv").config();
 const app = express()
 const passport = require('passport')
@@ -30,8 +31,8 @@ require('./config/passport')(passport);
 
 
 
-//EJS
-// app.use(expressLayouts);
+//EJS med layout, svårt att styla ejs samt länka html.
+app.use(expressLayouts);
 app.set('view engine', 'ejs');
 
 app.use(express.urlencoded({ extended: true }));

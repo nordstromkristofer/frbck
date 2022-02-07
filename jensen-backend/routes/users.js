@@ -15,7 +15,7 @@ const { forwardAuthenticated } = require('../config/auth');
 
 
 // Login Page
-router.get('/login',(req, res) => res.render('login'));
+ router.get('/login',(req, res) => res.render('welcome'));
 
 // Register Page
 router.get('/register',(req, res) => res.render('register'));
@@ -70,7 +70,7 @@ router.post('/register', (req, res) => {
                   'success_msg',
                   'You are now registered and can log in'
                 );
-                res.redirect('/users/login');
+                res.render('welcome');
               })
               .catch(err => console.log(err));
       
@@ -83,8 +83,7 @@ router.post('/register', (req, res) => {
 // Login
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login', // routa tbx
+    successRedirect: '/inne',
     failureFlash: true
   })(req, res, next);
   logger.log({
