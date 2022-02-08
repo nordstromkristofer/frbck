@@ -83,7 +83,6 @@ const logger = require("./config/logger")
  app.use(express.json());
 
  //route middlewares
-//  app.use('/api/user', authRoute);
  app.use('login', postRoute);
 
 
