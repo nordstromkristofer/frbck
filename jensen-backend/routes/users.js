@@ -66,10 +66,6 @@ router.post('/register', (req, res) => {
             newUser
               .save()
               .then(user => {
-                req.flash(
-                  'success_msg',
-                  'You are now registered and can log in'
-                );
                 res.render('welcome');
               })
               .catch(err => console.log(err));
@@ -84,20 +80,16 @@ router.post('/register', (req, res) => {
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
     successRedirect: '/inne',
-    failureFlash: true
-  })(req, res, next);
+  })(req, res, next); 
   logger.log({
     level: 'info',
-    message:''
+    message:'Inloggning'
   });
-
-
 });
 
 // Logout
 router.get('/logout', (req, res) => {
   req.logout();
-  req.flash('success_msg', 'You are logged out');
   res.render('welcome');
 });
 

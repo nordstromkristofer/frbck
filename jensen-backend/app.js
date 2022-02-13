@@ -12,7 +12,6 @@ const expressLayouts = require('express-ejs-layouts');
 require("dotenv").config();
 const app = express()
 const passport = require('passport')
-const flash = require('connect-flash');
 
 
 
@@ -49,17 +48,6 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-//Flash-meddelanden
-app.use(flash());
-
-// Global variables
-app.use(function(req, res, next) {
-   res.locals.success_msg = req.flash('success_msg');
-   res.locals.error_msg = req.flash('error_msg');
-   res.locals.error = req.flash('error');
-   next();
- });
-
 
 //routes
 app.use('/', require('../jensen-backend/routes/index'));
@@ -82,8 +70,8 @@ const logger = require("./config/logger")
 
  app.use(express.json());
 
- //route middlewares
- app.use('login', postRoute);
+//  //route middlewares
+//  app.use('login', postRoute);
 
 
 //heroku
